@@ -51,33 +51,108 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 {"id":47,"first_name":"Vida","last_name":"Tydd","email":"vtydd1a@dropbox.com","shirt_size":"S","company_name":"Quaxo","donation":55},
 {"id":48,"first_name":"Anderea","last_name":"MacGiolla Pheadair","email":"amacgiollapheadair1b@xing.com","shirt_size":"2XL","company_name":"Kwimbee","donation":214},
 {"id":49,"first_name":"Bel","last_name":"Alway","email":"balway1c@ow.ly","shirt_size":"S","company_name":"Voolia","donation":107},
-{"id":50,"first_name":"Shell","last_name":"Baine","email":"sbaine1d@intel.com","shirt_size":"M","company_name":"Gabtype","donation":171}];
+{"id":50,"first_name":"Shell","last_name":"Baine","email":"sbaine1d@intel.com","shirt_size":"M","company_name":"Gabtype","donation":1000}];
 
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
-console.log(fullName);
+
+runners.forEach(runner => {
+    fullName.push(`${runner.first_name} ${runner.last_name}`);
+})
+console.log("Runners'Full Name: " + fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
-let allCaps = [];
-console.log(allCaps); 
+let allCaps = runners.map(runner => {
+    return `${runner.first_name.toUpperCase()} ${runner.last_name}`;
+})
+
+
+console.log(`Uppercase First Name: ${allCaps}`); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
-console.log(largeShirts);
+let largeShirts = runners.filter(runner => {
+    return runner.shirt_size === "L"
+}).map(filtered => {
+    return (`${filtered.first_name} ${filtered.last_name}`);
+    
+})
+
+
+console.log(`Runners wearing size L shirts: ${JSON.stringify(largeShirts)}`);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
-let ticketPriceTotal = [];
-console.log(ticketPriceTotal);
+let ticketPriceTotal = runners.reduce((accumulator, current) => {
+    return accumulator + current.donation;
+},0)
+
+
+console.log(`The total ticket price is: $${ticketPriceTotal}`);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
 
+// find a runner based on the a runner's email
+
+function findRunnerByEmail(arr, email, cb) {
+
+    let runner = arr.find(runner => {
+        return runner.email === email
+    })
+
+    runner ? cb(runner): cb(`No runner with ${email} found"`);
+}
+
+findRunnerByEmail(runners, "sbaine1d@intel.com", (runner) => {
+    console.log("Problem 1: " + JSON.stringify(runner));
+    
+})
+
 // Problem 2
 
+// sort a runner based on his/her first name and return a list with runner full name only
+
+function sortRunnersByFirstName(arr, cb) {
+
+    let sorted = arr.sort(function(runnerOne, runnerTwo)  {
+        if (runnerOne.first_name < runnerTwo.first_name) {
+            return -1;
+        }
+        if (runnerOne.first_name > runnerTwo.first_name) {
+            return 1;
+        }
+
+        return 0;
+    });
+
+    cb(sorted.map(runner => {
+        return (runner.first_name + " " + runner.last_name);
+    }));
+}
+
+sortRunnersByFirstName(runners, (sorted) => {
+    console.log("Runners are shorted: " + JSON.stringify(sorted));
+})
+
 // Problem 3
+
+// look up a runner with the highest donation and return his/her name and the donation amount
+arr =[1,2,3];
+function highestDonation(arr, cb) {
+
+    let highest = arr.reduce((previous, current) => {
+        return (previous.donation > current.donation) ? previous : current ;
+    })
+
+    cb(highest.first_name + " " + highest.last_name);
+}
+
+highestDonation(runners, (highest) => {
+    console.log("Runner with the highest donation: " + highest)
+})
+
