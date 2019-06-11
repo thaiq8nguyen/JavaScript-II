@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Russo+One|Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
 
   <title>JS II</title>
 
@@ -13,6 +15,37 @@
 </head>
 
 <body>
-<h1>JS II - Check your work in the console!</h1>
+  <div id="app" class="container">
+    <header class="header">
+      <h1>{{ title }}</h1>
+      <nav class="nav-bar">
+        <a href="#" class="nav-item">Array Methods</a>
+        <a href="#" class="nav-item">Callbacks</a>
+        <a href="#" class="nav-item">Closure</a>
+      </nav>
+    </header>
+    <main class="main-content">
+      <article id = "array-method-challenge" class="outter-challenge-content">
+        <h2>Array Method Challenges</h2>
+        <section class="inner-challenge-content">
+          <h3>Runner Lookup By Email</h3>
+          <div class="form-container">
+            <form @submit.prevent="findRunnerByEmail">
+                <label for="email-query">Search</label>
+                <input type="text" name="email-query"  v-model="emailQuery">
+                <button type="submit" >Search</button>     
+            </form>
+          </div>
+          <div class="result-container">
+            <p>{{ runnerByEmail }}</p> 
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer class="footer">
+    </footer>
+  </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="app.js"></script>
 </html>

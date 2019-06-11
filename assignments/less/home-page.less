@@ -1,0 +1,78 @@
+.header{
+    display: flex;
+    padding: 2rem 0;
+    border-bottom: 0.3rem dashed silver;
+    justify-content: space-between;
+    align-items: center;
+    h1{
+        font-size: 2.6rem;
+        flex: 1;
+    }
+    .nav-bar{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        flex: 2;
+        .nav-item{
+            text-decoration: none;
+            color: grey;
+            font-size: 1.8rem;
+        }
+
+    }
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 0;
+    .outter-challenge-content{
+        h2{
+            font-size: 2rem;
+            text-decoration: underline;
+        }
+        .inner-challenge-content{
+            margin: 1.5rem;
+            background: whitesmoke;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            h3{
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+            .form-container form{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                label {
+                    font-size: 1.8rem;
+                    flex: 1;
+                }
+                input {
+                    padding: 0.75rem;
+                    font-size: 1.8rem;
+                    flex:2;
+                }
+                button {
+                    border: 0.1rem solid transparent;
+                    padding: 0.8rem 2rem;
+                    font-size: 1.8rem;
+                    color: white;
+                    background: crimson;
+                    flex: 1;
+                }
+                
+                
+                
+            }
+            .result-container{
+                margin-top: 3rem;
+                text-align: center;  
+                p {
+                    font-size: 2.8rem;
+                } 
+            }
+        }
+    }
+}

@@ -142,7 +142,7 @@ sortRunnersByFirstName(runners, (sorted) => {
 // Problem 3
 
 // look up a runner with the highest donation and return his/her name and the donation amount
-arr =[1,2,3];
+arr = [1,2,3];
 function highestDonation(arr, cb) {
 
     let highest = arr.reduce((previous, current) => {
